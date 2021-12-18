@@ -13,8 +13,6 @@ public class enemyScript : MonoBehaviour
 
         Debug.Log("collided");
         //Time.timeScale = 0;
-        PlayerControls.instance.gameOver = true;
-        scrollerMaster.instance.updateScrollSpeed(0f);
-        gameOverAnimator.SetTrigger("gameOver");
+        PlayerControls.instance.init_gameOver();
     }
 }

@@ -217,7 +217,7 @@ MonoBehaviour:
   counter_txt: {fileID: 589717126}
   bgm: {fileID: 1783192144}
   show_items_delay: 7
-  box_chance: 40
+  box_chance: 35
   double_box_chance: 5
 --- !u!1 &88319518
 GameObject:
