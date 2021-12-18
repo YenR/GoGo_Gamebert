@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -18,6 +20,39 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         instance = this;
+        startTime = Time.time;
+        updateBorger();
+        updateBooks();
+        updateChip();
+        updateDrinks();
+    }
+
+    public void updateBorger()
+    {
+        borgT.SetText(globalVars.borgers.ToString());
+        if (globalVars.borgers <= 0)
+            borgB.interactable = false;
+    }
+
+    public void updateChip()
+    {
+        chipT.SetText(globalVars.chips.ToString());
+        if (globalVars.chips <= 0)
+            chipB.interactable = false;
+    }
+
+    public void updateBooks()
+    {
+        bookT.SetText(globalVars.books.ToString());
+        if (globalVars.books <= 0)
+            bookB.interactable = false;
+    }
+
+    public void updateDrinks()
+    {
+        drinkT.SetText(globalVars.drinks.ToString());
+        if (globalVars.drinks <= 0)
+            drinkB.interactable = false;
     }
 
     float lastPressed = 0;
@@ -54,10 +89,23 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    public TMP_Text scoreTxt;
+    private float startTime = 0;
+
     public void init_gameOver()
     {
+        if (gameOver)
+            return;
+
+        borgB.gameObject.SetActive(false);
+        chipB.gameObject.SetActive(false);
+        bookB.gameObject.SetActive(false);
+        drinkB.gameObject.SetActive(false);
+
         globalVars.lootboxes_left++;
         StartCoroutine(showGameOverStuff(3));
+
+        scoreTxt.SetText((Time.time - startTime).ToString("F2"));
 
         bgm.Stop();
         gamovr.Play();
@@ -79,5 +127,8 @@ public class PlayerControls : MonoBehaviour
     }
 
     public AudioSource jump, fly, pickup, gamovr,bgm;
+
+    public Button borgB, chipB, bookB, drinkB;
+    public TMP_Text borgT, chipT, bookT, drinkT;
 }
 
