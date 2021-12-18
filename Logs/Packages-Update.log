@@ -48,3 +48,14 @@ The following packages were updated:
   com.unity.2d.animation from version 5.0.1 to 5.0.8
   com.unity.2d.psdimporter from version 4.0.1 to 4.1.1
   com.unity.2d.spriteshape from version 5.0.1 to 5.1.5
+
+=== Sat Dec 18 11:52:47 2021
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.ads@2.0.8
+  com.unity.analytics@3.2.3
+  com.unity.package-manager-ui@2.0.13
+  com.unity.purchasing@2.2.1

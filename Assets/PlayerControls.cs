@@ -23,7 +23,13 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && this.gameObject.transform.position.y <= groundLevel && !gameOver)
+        if (Input.GetKeyDown(KeyCode.Space))
+            Jump();
+    }
+
+    public void Jump()
+    {
+        if(this.gameObject.transform.position.y <= groundLevel && !gameOver)
         {
             rb.AddForce(jumpForce, ForceMode2D.Impulse);
         }

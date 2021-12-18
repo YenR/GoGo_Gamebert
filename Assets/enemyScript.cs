@@ -8,6 +8,9 @@ public class enemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if ((collision.gameObject.tag != "Player"))
+            return;
+
         Debug.Log("collided");
         //Time.timeScale = 0;
         PlayerControls.instance.gameOver = true;
