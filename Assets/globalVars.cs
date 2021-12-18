@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class globalVars : MonoBehaviour
 {
-    public static int lootboxes_left;
+    public static int lootboxes_left = 1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static int drinks = 0, borgers = 0, chips = 0, books = 0;
 }

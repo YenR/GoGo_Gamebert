@@ -27,4 +27,10 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(0));
     }
 
+    public void LoadLevelByNr(int nr)
+    {
+
+        StartCoroutine(LoadLevel(nr));
+    }
+
 }
