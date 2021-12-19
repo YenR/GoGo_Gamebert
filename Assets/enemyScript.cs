@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class enemyScript : MonoBehaviour
 {
-    public Animator gameOverAnimator;
+    //public Animator gameOverAnimator;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

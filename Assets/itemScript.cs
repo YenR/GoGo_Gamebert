@@ -37,7 +37,7 @@ public class itemScript : MonoBehaviour
     }
 
     private string borg_tt = "Burger:\nTasty, but heavy. Slows you down, which pays off sometimes."
-        , drink_tt = "Energy Drink:\nMight make you fly."
+        , drink_tt = "Energy Drink:\nMight give you wings. Use while jumping."
         , chip_tt = "CPU Chip:\nChips keep you running, even faster!"
         , box_tt = "Loot Box:\nModern age divination. What's inside? Find out!"
         , book_tt = "Lore Book:\nTo defeat an enemy, you must know them";
@@ -311,6 +311,8 @@ public class itemScript : MonoBehaviour
 
         back.gameObject.SetActive(true);
         counter.gameObject.SetActive(true);
+        boxCounterDesc.gameObject.SetActive(true);
+
         bgm.UnPause();
 
         if (globalVars.lootboxes_left > 0)
@@ -319,4 +321,6 @@ public class itemScript : MonoBehaviour
             reset.gameObject.SetActive(true);
         }
     }
+
+    public GameObject boxCounterDesc;
 }

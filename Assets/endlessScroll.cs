@@ -20,12 +20,34 @@ public class endlessScroll : MonoBehaviour
         resetPosition = new Vector2(width * 2f, 0);
     }
 
+    public GameObject myEnemy;
+    public GameObject[] enemies;
+
+    public GameObject lb;
+
     // Update is called once per frame
     void Update()
     {
         if(transform.position.x < -width)
         {
             transform.position = (Vector2)transform.position + resetPosition;
+
+            if(myEnemy!=null)
+                Destroy(myEnemy);
+
+            if(enemies != null && enemies.Length > 0)
+            {
+                int rng = Random.Range(0, enemies.Length);
+                myEnemy = Instantiate(enemies[rng], this.gameObject.transform);
+            }
+            else if(lb != null)
+            {
+                int rng = Random.Range(0, 6);
+                if(rng == 0)
+                {
+                    myEnemy = Instantiate(lb, this.gameObject.transform);
+                }
+            }
         }
     }
 }
