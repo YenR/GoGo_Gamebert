@@ -21,7 +21,7 @@ public class itemScript : MonoBehaviour
 
     public Animator boxAnim, itemAnim;
 
-    public Sprite borg, drink, book, box, chip;
+    public Sprite borg, drink, book, box, chip, racc, retro;
 
     public Button reset, back;
 
@@ -40,7 +40,9 @@ public class itemScript : MonoBehaviour
         , drink_tt = "Energy Drink:\nMight give you wings. Use while jumping."
         , chip_tt = "CPU Chip:\nChips keep you running, even faster!"
         , box_tt = "Loot Box:\nModern age divination. What's inside? Find out!"
-        , book_tt = "Lore Book:\nTo defeat an enemy, you must know them";
+        , book_tt = "Lore Book:\nTo defeat an enemy, you must know them"
+        , racc_tt = "Trash Panda:\nNew character unlocked!"
+        , retro_tt = "Retro Gamebert:\nNew character unlocked!";
 
     public AudioSource bgm;
 
@@ -56,6 +58,8 @@ public class itemScript : MonoBehaviour
     public int box_chance = 40;
     public int double_box_chance = 5;
 
+
+    public int retro_chance = 15, racc_chance = 5;
 
     IEnumerator generator(int secs)
     {
@@ -79,12 +83,33 @@ public class itemScript : MonoBehaviour
             case 0:
                 if(rng < box_chance) // rolled a lootbox!
                 {
-                    it1.startColor = legendary;
-                    it1.endColor = legendary;
-                    m1.material = mat_legendary;
-                    i1.sprite = box;
-                    globalVars.lootboxes_left++;
-                    t1.txt = box_tt;
+                    if(rng < racc_chance && !globalVars.raccUnlocked)   // actually rolled a super rare raccoon!
+                    {
+                        globalVars.raccUnlocked = true;
+                        it1.startColor = legendary;
+                        it1.endColor = legendary;
+                        m1.material = mat_legendary;
+                        i1.sprite = racc;
+                        t1.txt = racc_tt;
+                    }
+                    else if(rng < retro_chance && !globalVars.retroUnlocked) // actually rolled a rare retro gamebert!
+                    {
+                        globalVars.retroUnlocked = true;
+                        it1.startColor = legendary;
+                        it1.endColor = legendary;
+                        m1.material = mat_legendary;
+                        i1.sprite = retro;
+                        t1.txt = retro_tt;
+                    }
+                    else
+                    {
+                        it1.startColor = legendary;
+                        it1.endColor = legendary;
+                        m1.material = mat_legendary;
+                        i1.sprite = box;
+                        globalVars.lootboxes_left++;
+                        t1.txt = box_tt;
+                    }
                 }
                 else // rolled another rare item!
                 {

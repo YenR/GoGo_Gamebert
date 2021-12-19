@@ -308,6 +308,8 @@ MonoBehaviour:
   book: {fileID: 21300000, guid: 8e8c5989705c822429af087b7a8747b2, type: 3}
   box: {fileID: 21300000, guid: 7e1393206e957eb4496f20a8cea9ef4b, type: 3}
   chip: {fileID: 21300000, guid: e3fc1f8f2d9c0324da435b8954e47949, type: 3}
+  racc: {fileID: 21300000, guid: 145aaeca40b46674481e9aba27cd1977, type: 3}
+  retro: {fileID: 21300000, guid: 0f5226147cb64784180d00d8c0bab971, type: 3}
   reset: {fileID: 2137227928}
   back: {fileID: 1172323187}
   counter: {fileID: 1055106431}
@@ -319,6 +321,8 @@ MonoBehaviour:
   show_items_delay: 7
   box_chance: 35
   double_box_chance: 5
+  retro_chance: 20
+  racc_chance: 10
   boxCounterDesc: {fileID: 87805135}
 --- !u!1 &87805135
 GameObject:

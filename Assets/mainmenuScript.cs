@@ -40,7 +40,8 @@ public class mainmenuScript : MonoBehaviour
         }
         else
         {
-            ll.LoadNextLevel();
+            ll.LoadLevelByNr(3);
+            //ll.LoadNextLevel();
         }
     }
 

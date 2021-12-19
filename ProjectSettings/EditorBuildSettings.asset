@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Animated PBR Chest Demo/Scenes/Animated PBR Chest Demo.unity
     guid: e3b2ad27511392840b2aae0d2edc4e4e
+  - enabled: 1
+    path: Assets/Scenes/chooseYourCharacter.unity
+    guid: 778c2139a99a2e2439a5bb840b8d4d98
+  - enabled: 1
+    path: Assets/Scenes/game_retro.unity
+    guid: c55d89e5041bd294cac4792c79330ad3
+  - enabled: 1
+    path: Assets/Scenes/game_racc.unity
+    guid: d02f9f5367e1a754ab56e57a0b2e3b8c
   m_configObjects: {}

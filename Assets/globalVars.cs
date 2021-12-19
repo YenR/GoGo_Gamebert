@@ -8,5 +8,5 @@ public class globalVars : MonoBehaviour
 
     public static int drinks = 0, borgers = 0, chips = 0, books = 0;
 
-    public static bool firstTime = true;
+    public static bool firstTime = true, retroUnlocked = false, raccUnlocked = false;
 }
