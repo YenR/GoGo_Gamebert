@@ -11,6 +11,7 @@ public class itemScript : MonoBehaviour
     public Color normal = new Color(153f / 255f, 255f / 255f, 134f / 255f);
     public Color rare = new Color(173f / 255f, 255f / 255f, 255f / 255f);
     public Color legendary = new Color(255f / 255f, 162f / 255f, 0f / 255f);
+    public Color trash = new Color(0.2f, 0.2f, 0.2f);
 
     public Material mat_normal, mat_rare, mat_legendary;
 
@@ -27,17 +28,19 @@ public class itemScript : MonoBehaviour
     public GameObject counter;
     public TMP_Text counter_txt;
 
+    public tooltipper t1, t2, t3;
+
     // Start is called before the first frame update
     void Start()
     {
         counter_txt.SetText(globalVars.lootboxes_left.ToString());   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private string borg_tt = "Burger:\nTasty, but heavy. Slows you down, which pays off sometimes."
+        , drink_tt = "Energy Drink:\nMight make you fly."
+        , chip_tt = "CPU Chip:\nChips keep you running, even faster!"
+        , box_tt = "Loot Box:\nModern age divination. What's inside? Find out!"
+        , book_tt = "Lore Book:\nTo defeat an enemy, you must know them";
 
     public AudioSource bgm;
 
@@ -81,6 +84,7 @@ public class itemScript : MonoBehaviour
                     m1.material = mat_legendary;
                     i1.sprite = box;
                     globalVars.lootboxes_left++;
+                    t1.txt = box_tt;
                 }
                 else // rolled another rare item!
                 {
@@ -89,6 +93,7 @@ public class itemScript : MonoBehaviour
                     m1.material = mat_rare;
                     i1.sprite = drink;
                     globalVars.drinks++;
+                    t1.txt = drink_tt;
                 }
                 if(rng<double_box_chance)
                 {
@@ -97,6 +102,7 @@ public class itemScript : MonoBehaviour
                     m2.material = mat_legendary;
                     i2.sprite = box;
                     globalVars.lootboxes_left++;
+                    t2.txt = box_tt;
                 }
                 else
                 {
@@ -105,16 +111,19 @@ public class itemScript : MonoBehaviour
                     {
                         i2.sprite = borg;
                         globalVars.borgers++;
+                        t2.txt = borg_tt;
                     }
                     else if (rng == 1) // chip
                     {
                         i2.sprite = chip;
                         globalVars.chips++;
+                        t2.txt = chip_tt;
                     }
                     else //book
                     {
                         i2.sprite = book;
                         globalVars.books++;
+                        t2.txt = book_tt;
                     }
                 }
                 rng = Random.Range(0, 3);
@@ -122,16 +131,19 @@ public class itemScript : MonoBehaviour
                 {
                     i3.sprite = borg;
                     globalVars.borgers++;
+                    t3.txt = borg_tt;
                 }
                 else if (rng == 1) // chip
                 {
                     i3.sprite = chip;
                     globalVars.chips++;
+                    t3.txt = chip_tt;
                 }
                 else //book
                 {
                     i3.sprite = book;
                     globalVars.books++;
+                    t3.txt = book_tt;
                 }
                 break;
 
@@ -143,6 +155,7 @@ public class itemScript : MonoBehaviour
                     m2.material = mat_legendary;
                     i2.sprite = box;
                     globalVars.lootboxes_left++;
+                    t2.txt = box_tt;
                 }
                 else // rolled another rare item!
                 {
@@ -151,6 +164,7 @@ public class itemScript : MonoBehaviour
                     m2.material = mat_rare;
                     i2.sprite = drink;
                     globalVars.drinks++;
+                    t2.txt = drink_tt;
                 }
                 if (rng < double_box_chance)
                 {
@@ -159,6 +173,7 @@ public class itemScript : MonoBehaviour
                     m1.material = mat_legendary;
                     i1.sprite = box;
                     globalVars.lootboxes_left++;
+                    t1.txt = box_tt;
                 }
                 else
                 {
@@ -167,16 +182,19 @@ public class itemScript : MonoBehaviour
                     {
                         i1.sprite = borg;
                         globalVars.borgers++;
+                        t1.txt = borg_tt;
                     }
                     else if (rng == 1) // chip
                     {
                         i1.sprite = chip;
                         globalVars.chips++;
+                        t1.txt = chip_tt;
                     }
                     else //book
                     {
                         i1.sprite = book;
                         globalVars.books++;
+                        t1.txt = book_tt;
                     }
                 }
                 rng = Random.Range(0, 3);
@@ -184,16 +202,19 @@ public class itemScript : MonoBehaviour
                 {
                     i3.sprite = borg;
                     globalVars.borgers++;
+                    t3.txt = borg_tt;
                 }
                 else if (rng == 1) // chip
                 {
                     i3.sprite = chip;
                     globalVars.chips++;
+                    t3.txt = chip_tt;
                 }
                 else //book
                 {
                     i3.sprite = book;
                     globalVars.books++;
+                    t3.txt = book_tt;
                 }
                 break;
 
@@ -205,6 +226,7 @@ public class itemScript : MonoBehaviour
                     m3.material = mat_legendary;
                     i3.sprite = box;
                     globalVars.lootboxes_left++;
+                    t3.txt = box_tt;
                 }
                 else // rolled another rare item!
                 {
@@ -213,6 +235,7 @@ public class itemScript : MonoBehaviour
                     m3.material = mat_rare;
                     i3.sprite = drink;
                     globalVars.drinks++;
+                    t3.txt = drink_tt;
                 }
                 if (rng < double_box_chance)
                 {
@@ -221,6 +244,7 @@ public class itemScript : MonoBehaviour
                     m2.material = mat_legendary;
                     i2.sprite = box;
                     globalVars.lootboxes_left++;
+                    t2.txt = box_tt;
                 }
                 else
                 {
@@ -229,16 +253,19 @@ public class itemScript : MonoBehaviour
                     {
                         i2.sprite = borg;
                         globalVars.borgers++;
+                        t2.txt = borg_tt;
                     }
                     else if (rng == 1) // chip
                     {
                         i2.sprite = chip;
                         globalVars.chips++;
+                        t2.txt = chip_tt;
                     }
                     else //book
                     {
                         i2.sprite = book;
                         globalVars.books++;
+                        t2.txt = book_tt;
                     }
                 }
                 rng = Random.Range(0, 3);
@@ -246,16 +273,19 @@ public class itemScript : MonoBehaviour
                 {
                     i1.sprite = borg;
                     globalVars.borgers++;
+                    t1.txt = borg_tt;
                 }
                 else if (rng == 1) // chip
                 {
                     i1.sprite = chip;
                     globalVars.chips++;
+                    t1.txt = chip_tt;
                 }
                 else //book
                 {
                     i1.sprite = book;
                     globalVars.books++;
+                    t1.txt = book_tt;
                 }
                 break;
 

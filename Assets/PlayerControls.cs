@@ -9,6 +9,7 @@ public class PlayerControls : MonoBehaviour
     public Rigidbody2D rb;
 
     public Vector2 jumpForce = new Vector2(0f, 10f);
+    public Vector2 flyForce = new Vector2(0f, 15f);
 
     public float groundLevel;
 
@@ -55,23 +56,70 @@ public class PlayerControls : MonoBehaviour
             drinkB.interactable = false;
     }
 
+    public void borgerPressed()
+    {
+        if(globalVars.borgers <= 0)
+        {
+            err.PlayOneShot(err.clip);
+        }
+        else
+        {
+            scrollerMaster.instance.reduceSpeed();
+            globalVars.borgers--;
+            updateBorger();
+        }
+    }
+
+    public void chipPressed()
+    {
+        if (globalVars.chips <= 0)
+        {
+            err.PlayOneShot(err.clip);
+        }
+        else
+        {
+            scrollerMaster.instance.addSpeed();
+            globalVars.chips--;
+            updateChip();
+        }
+    }
+
+    public void drinkPressed()
+    {
+        Debug.Log("drink pressed");
+        if(globalVars.drinks <= 0 || !jumping)
+        {
+            err.PlayOneShot(err.clip);
+        }
+        else
+        {
+            rb.AddForce(flyForce, ForceMode2D.Impulse);
+            fly.PlayOneShot(fly.clip);
+            gamebert.SetBool("fly", true);
+            flying = true;
+            globalVars.drinks--;
+            updateDrinks();
+        }
+    }
+
     float lastPressed = 0;
     // Update is called once per frame
     void Update()
     {
+        if ((jumping || flying) && this.gameObject.transform.position.y < groundLevel && (lastPressed + 1f < Time.time))
+        {
+            Debug.Log("cancel jump"+ lastPressed+ ", "+  Time.time);
 
-        if (Input.GetKeyDown(KeyCode.Space) && lastPressed != Time.time)
-        {
-            lastPressed = Time.time;
-            Jump();
-        }
-        if ((jumping || flying) && this.gameObject.transform.position.y <= groundLevel)
-        {
             jumping = false;
             flying = false;
 
             gamebert.SetBool("fly", false);
             gamebert.SetBool("jump", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && lastPressed != Time.time)
+        {
+            Jump();
         }
     }
 
@@ -80,6 +128,7 @@ public class PlayerControls : MonoBehaviour
 
     public void Jump()
     {
+        lastPressed = Time.time;
         if (this.gameObject.transform.position.y <= groundLevel && !gameOver)
         {
             rb.AddForce(jumpForce, ForceMode2D.Impulse);
@@ -126,7 +175,7 @@ public class PlayerControls : MonoBehaviour
         gameOverStuff.gameObject.SetActive(true);
     }
 
-    public AudioSource jump, fly, pickup, gamovr,bgm;
+    public AudioSource jump, fly, pickup, gamovr,bgm, err;
 
     public Button borgB, chipB, bookB, drinkB;
     public TMP_Text borgT, chipT, bookT, drinkT;
